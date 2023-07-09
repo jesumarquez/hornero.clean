@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Hornero.Clean.Domain\Hornero.Clean.Domain.csproj" />
     <ProjectReference Include="..\Hornero.Clean.Application\Hornero.Clean.Application.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
 
 </Project>
