@@ -9,7 +9,15 @@ namespace Hornero.Clean.Api.Controller
         [HttpPost("register")]
         public IActionResult Register(RegisterRequest request)
         {
-            return Ok(request);
+            var response = new AuthenticationResponse(
+                Id: Guid.NewGuid(),
+                FirstName: request.FirstName,
+                LastName: request.LastName,
+                Email: request.Email,
+                Token: "token"
+            );
+
+            return Ok(response);
         } 
     }
 }
