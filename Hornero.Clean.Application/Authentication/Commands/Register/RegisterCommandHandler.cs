@@ -1,7 +1,10 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Hornero.Clean.Application.Authentication.Common;
 using Hornero.Clean.Application.Common.Interfaces.Authentication;
+using Hornero.Clean.Application.Common.Persistence;
+using Hornero.Clean.Domain.Entities;
 using MediatR;
 
 namespace Hornero.Clean.Application.Authentication.Commands.Register
@@ -9,20 +12,36 @@ namespace Hornero.Clean.Application.Authentication.Commands.Register
     public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthenticationResult>
     {
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
+        private readonly IUserRepository _userRepository;
 
-        public RegisterCommandHandler(IJwtTokenGenerator jwtTokenGenerator)
+        public RegisterCommandHandler(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
         {
             _jwtTokenGenerator = jwtTokenGenerator;
+            _userRepository = userRepository;
         }
 
         public async Task<AuthenticationResult> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
-            var token = _jwtTokenGenerator.GenerateToken(request.User.Id, request.User.FirstName, request.User.LastName);
+            if(_userRepository.GetUserByEmail(request.User.Email) is not null)
+            {
+                throw new Exception("User with given email already exists.");
+            }
+
+            var user = new User{
+                FirstName = request.User.FirstName,
+                LastName = request.User.LastName,
+                Email = request.User.Email,
+                Password = request.User.Password
+            };
+
+            _userRepository.Add(user);
+
+            var token = _jwtTokenGenerator.GenerateToken(user.Id, user.FirstName, user.LastName);
             
             return new AuthenticationResult(
-                User: request.User,
+                User: user,
                 Token: token
             );
         }

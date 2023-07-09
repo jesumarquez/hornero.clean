@@ -4,6 +4,8 @@ using Hornero.Clean.Infrastrucutre.Authentication;
 using Hornero.Clean.Application.Common.Interfaces.Services;
 using Hornero.Clean.Application.Services;
 using Microsoft.Extensions.Configuration;
+using Hornero.Clean.Application.Common.Persistence;
+using Hornero.Clean.Infrastrucutre.Persistence;
 
 namespace Hornero.Clean.Infrastrucutre
 {
@@ -16,6 +18,7 @@ namespace Hornero.Clean.Infrastrucutre
 
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
