@@ -1,4 +1,6 @@
+using ErrorOr;
 using Hornero.Clean.Application.Authentication.Commands.Register;
+using Hornero.Clean.Application.Authentication.Common;
 using Hornero.Clean.Contract.Authentication;
 using Hornero.Clean.Domain.Entities;
 using MediatR;
@@ -20,7 +22,8 @@ namespace Hornero.Clean.Api.Controller
         public async Task<IActionResult> Register(RegisterRequest request)
         {
             var command = new RegisterCommand(
-                User: new User {
+                User: new User
+                {
                     FirstName = request.FirstName,
                     LastName = request.LastName,
                     Email = request.Email,
@@ -28,17 +31,23 @@ namespace Hornero.Clean.Api.Controller
                 }
             );
 
-            var authResult = await _mediator.Send(command);
+            ErrorOr<AuthenticationResult> authResult = await _mediator.Send(command);
 
-            var response = new AuthenticationResponse(
-                Id: authResult.User.Id,
-                FirstName: authResult.User.FirstName,
-                LastName: authResult.User.LastName,
-                Email: authResult.User.Email,
-                Token: authResult.Token
+            return authResult.Match(
+                authResult => Ok(MapAuthResult(authResult)),
+                errors => Problem(errors)
             );
+        }
 
-            return Ok(response);
+        private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
+        {
+            return new AuthenticationResponse(
+                            Id: authResult.User.Id,
+                            FirstName: authResult.User.FirstName,
+                            LastName: authResult.User.LastName,
+                            Email: authResult.User.Email,
+                            Token: authResult.Token
+                        );
         }
 
         [HttpPost("login")]

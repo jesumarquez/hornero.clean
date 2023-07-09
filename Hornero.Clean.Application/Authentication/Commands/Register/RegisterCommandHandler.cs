@@ -1,15 +1,17 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using ErrorOr;
 using Hornero.Clean.Application.Authentication.Common;
 using Hornero.Clean.Application.Common.Interfaces.Authentication;
 using Hornero.Clean.Application.Common.Persistence;
 using Hornero.Clean.Domain.Entities;
 using MediatR;
+using Hornero.Clean.Domain.Common.Errors;
 
 namespace Hornero.Clean.Application.Authentication.Commands.Register
 {
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthenticationResult>
+    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
     {
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IUserRepository _userRepository;
@@ -20,13 +22,13 @@ namespace Hornero.Clean.Application.Authentication.Commands.Register
             _userRepository = userRepository;
         }
 
-        public async Task<AuthenticationResult> Handle(RegisterCommand request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
 
             if(_userRepository.GetUserByEmail(request.User.Email) is not null)
             {
-                throw new Exception("User with given email already exists.");
+                return Errors.User.DuplicatedEmail;
             }
 
             var user = new User{
