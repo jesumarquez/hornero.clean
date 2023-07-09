@@ -1,9 +1,11 @@
 using Hornero.Clean.Application;
+using Hornero.Clean.Infrastrucutre;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
-    .AddApplication();
+        .AddApplication()
+        .AddInfrastructure();
     
     builder.Services.AddControllers();
 }
