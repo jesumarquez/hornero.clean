@@ -1,9 +1,10 @@
 using System;
+using Hornero.Clean.Domain.Entities;
 
 namespace Hornero.Clean.Application.Common.Interfaces.Authentication
 {
     public interface IJwtTokenGenerator
     {
-        string GenerateToken(Guid userId, string firsrName, string lastName);
+        string GenerateToken(User user);
     }
 }

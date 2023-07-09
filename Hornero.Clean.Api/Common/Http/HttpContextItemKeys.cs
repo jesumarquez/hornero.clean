@@ -1,4 +1,4 @@
-namespace Hornero.Clean.Api.Http
+namespace Hornero.Clean.Api.Common.Http
 {
     public static class HttpContextItemKeys
     {

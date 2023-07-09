@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using ErrorOr;
-using Hornero.Clean.Api.Http;
+using Hornero.Clean.Api.Common.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;

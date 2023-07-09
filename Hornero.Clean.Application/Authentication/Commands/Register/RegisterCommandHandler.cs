@@ -40,7 +40,7 @@ namespace Hornero.Clean.Application.Authentication.Commands.Register
 
             _userRepository.Add(user);
 
-            var token = _jwtTokenGenerator.GenerateToken(user.Id, user.FirstName, user.LastName);
+            var token = _jwtTokenGenerator.GenerateToken(user);
             
             return new AuthenticationResult(
                 User: user,

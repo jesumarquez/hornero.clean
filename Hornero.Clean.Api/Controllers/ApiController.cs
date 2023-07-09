@@ -1,5 +1,5 @@
 using ErrorOr;
-using Hornero.Clean.Api.Http;
+using Hornero.Clean.Api.Common.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hornero.Clean.Api.Controller

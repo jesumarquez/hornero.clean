@@ -1,3 +1,4 @@
+using Hornero.Clean.Api;
 using Hornero.Clean.Api.Errors;
 using Hornero.Clean.Application;
 using Hornero.Clean.Infrastrucutre;
@@ -6,11 +7,9 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-    
-    builder.Services.AddControllers();
-    builder.Services.AddSingleton<ProblemDetailsFactory,HorneroCleanProblemDetailsFactory>();
 }
 
 var app = builder.Build();
