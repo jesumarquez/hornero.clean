@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e9435a8a-dfe0-420d-9ef7-c6ae51f922eb</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hornero.Clean.Domain\Hornero.Clean.Domain.csproj"/>
-    <ProjectReference Include="..\Hornero.Clean.Application\Hornero.Clean.Application.csproj"/>
-    <ProjectReference Include="..\Hornero.Clean.Infrastructure\Hornero.Clean.Infrastructure.csproj"/>
-    <ProjectReference Include="..\Hornero.Clean.Contract\Hornero.Clean.Contract.csproj"/>
+    <ProjectReference Include="..\Hornero.Clean.Domain\Hornero.Clean.Domain.csproj" />
+    <ProjectReference Include="..\Hornero.Clean.Application\Hornero.Clean.Application.csproj" />
+    <ProjectReference Include="..\Hornero.Clean.Infrastructure\Hornero.Clean.Infrastructure.csproj" />
+    <ProjectReference Include="..\Hornero.Clean.Contract\Hornero.Clean.Contract.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.1.0"/>
+    <PackageReference Include="MediatR" Version="12.1.0" />
   </ItemGroup>
 </Project>
