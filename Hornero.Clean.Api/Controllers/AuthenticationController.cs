@@ -18,6 +18,20 @@ namespace Hornero.Clean.Api.Controller
             );
 
             return Ok(response);
+        }
+
+        [HttpPost("login")]
+        public IActionResult Login(LoginRequest request)
+        {
+            var response = new AuthenticationResponse(
+                Id: Guid.NewGuid(),
+                FirstName: "firstname",
+                LastName: "lastName",
+                Email: request.Email,
+                Token: "token"
+            );
+
+            return Ok(response);
         } 
     }
 }
