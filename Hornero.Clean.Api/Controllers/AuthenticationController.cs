@@ -3,14 +3,15 @@ using Hornero.Clean.Application.Authentication.Commands.Register;
 using Hornero.Clean.Application.Authentication.Common;
 using Hornero.Clean.Application.Authentication.Queries.Login;
 using Hornero.Clean.Contract.Authentication;
-using Hornero.Clean.Domain.Entities;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hornero.Clean.Api.Controller
 {
     [Route("auth")]
+    [AllowAnonymous]
     public class AuthenticationController : ApiController
     {
         private readonly IMediator _mediator;

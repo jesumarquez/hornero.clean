@@ -1,8 +1,6 @@
 using Hornero.Clean.Api;
-using Hornero.Clean.Api.Errors;
 using Hornero.Clean.Application;
 using Hornero.Clean.Infrastrucutre;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -16,6 +14,8 @@ var app = builder.Build();
 {
     app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
     app.MapControllers();
     app.Run();
 }
