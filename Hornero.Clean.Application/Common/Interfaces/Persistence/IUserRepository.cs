@@ -1,6 +1,6 @@
 using Hornero.Clean.Domain.Entities;
 
-namespace Hornero.Clean.Application.Common.Persistence
+namespace Hornero.Clean.Application.Common.Interfaces.Persistence
 {
     public interface IUserRepository
     {

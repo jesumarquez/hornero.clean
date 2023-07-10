@@ -4,8 +4,8 @@ using Hornero.Clean.Infrastrucutre.Authentication;
 using Hornero.Clean.Application.Common.Interfaces.Services;
 using Hornero.Clean.Application.Services;
 using Microsoft.Extensions.Configuration;
-using Hornero.Clean.Application.Common.Persistence;
 using Hornero.Clean.Infrastrucutre.Persistence;
+using Hornero.Clean.Application.Common.Interfaces.Persistence;
 
 namespace Hornero.Clean.Infrastrucutre
 {

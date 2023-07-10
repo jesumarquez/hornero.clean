@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Hornero.Clean.Application.Common.Persistence;
 using Hornero.Clean.Domain.Entities;
 using System.Linq;
+using Hornero.Clean.Application.Common.Interfaces.Persistence;
 
 namespace Hornero.Clean.Infrastrucutre.Persistence
 {

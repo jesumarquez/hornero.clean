@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using ErrorOr;
 using Hornero.Clean.Application.Authentication.Common;
 using Hornero.Clean.Application.Common.Interfaces.Authentication;
-using Hornero.Clean.Application.Common.Persistence;
+using Hornero.Clean.Application.Common.Interfaces.Persistence;
 using Hornero.Clean.Domain.Entities;
 using MediatR;
 using Hornero.Clean.Domain.Common.Errors;
