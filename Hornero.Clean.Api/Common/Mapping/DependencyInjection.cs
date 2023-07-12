@@ -14,7 +14,6 @@ namespace Hornero.Clean.Api.Common.Mapping
 
             services.AddSingleton(config);
             services.AddScoped<IMapper, ServiceMapper>();
-            
 
             return services;
         }

@@ -14,20 +14,24 @@ namespace Hornero.Clean.Domain.MenuAgregate.Entities
         private MenuSection(
             MenuSectionId id,
             string name,
-            string description) : base(id)
+            string description,
+            List<MenuItem> items) : base(id)
         {
             Name = name;
             Description = description;
+            _items = items;
         }
 
         public static MenuSection Create(
             string name,
-            string description)
+            string description,
+            List<MenuItem> items)
         {
             return new(
                 MenuSectionId.CreateUnique(),
                 name,
-                description);
+                description,
+                items ?? new());
         }
     }
 }

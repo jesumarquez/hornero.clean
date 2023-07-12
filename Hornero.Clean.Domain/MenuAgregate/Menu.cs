@@ -28,37 +28,34 @@ namespace Hornero.Clean.Domain.MenuAgregate
 
         private Menu(
             MenuId id,
+            HostId hostId,
             string name,
             string description,
-            HostId hostId,
-            DateTime createdDateTime,
-            DateTime updatedDateTime,
-            AverageRating averageRating) : base(id)
+            AverageRating averageRating,
+            List<MenuSection> sections) : base(id)
         {
             Name = name;
             Description = description;
             HostId = hostId;
-            CreatedDateTime = createdDateTime;
-            UpdatedDateTime = updatedDateTime;
+            CreatedDateTime = DateTime.UtcNow;
+            UpdatedDateTime = DateTime.UtcNow;
             AverageRating = averageRating;
+            _sections = sections;
         }
 
-        private static Menu Create(
+        public static Menu Create(
+            HostId hostId,
             string name, 
             string description,
-            HostId hostId,
-            DateTime createdDateTime,
-            DateTime updatedDateTime,
-            AverageRating averageRating)
+            List<MenuSection>? sections)
         {
             return new(
                 MenuId.CreateUnique(),
+                hostId,
                 name,
                 description,
-                hostId,
-                createdDateTime,
-                updatedDateTime,
-                averageRating
+                AverageRating.CreateNew(),
+                sections ?? new()
             );
         }
     }

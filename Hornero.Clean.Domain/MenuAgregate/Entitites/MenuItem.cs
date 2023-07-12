@@ -21,7 +21,8 @@ namespace Hornero.Clean.Domain.MenuAgregate.Entities
             string name,
             string description)
         {
-            return new(MenuItemId.CreateUnique(),
+            return new(
+                MenuItemId.CreateUnique(),
                 name,
                 description
             );
