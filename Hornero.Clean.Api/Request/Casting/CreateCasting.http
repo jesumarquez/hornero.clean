@@ -1,0 +1,10 @@
+@host=https://localhost:7109
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNmM2Njk5ZC1jZDNiLTQxM2UtOTY4My1mN2EwYmQ4MmZiMjgiLCJnaXZlbl9uYW1lIjoiRnVsYW5vIiwiZmFtaWx5X25hbWUiOiJEZXRhbCIsImp0aSI6IjM2YmFmYTIxLWI0MGEtNGM3Mi04ODhhLWEyMTFmMGIxOTkwYSIsImV4cCI6MTY4OTcwODYyMywiaXNzIjoiSG9ybmVyb0NsZWFuIiwiYXVkIjoiSG9ybmVyb0NsZWFuIn0.4qfqoweSGnbL0v0JSjJEg3jdnLYU3LlS0f71q3hHawA
+POST {{host}}/casting
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "castingNumber": 1234,
+    "startDateTime": "2023-01-01T22:08:03"
+}

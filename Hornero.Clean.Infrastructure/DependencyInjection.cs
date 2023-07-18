@@ -31,6 +31,7 @@ namespace Hornero.Clean.Infrastrucutre
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<ICastingRepository, CastingRepository>();
             
             return services;
         }
